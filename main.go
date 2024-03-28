@@ -31,7 +31,7 @@ func main() {
 	e.POST("/clips", CreateClipboard)
 	e.GET("/clips/:uuid", GetClipboard)
 	e.PUT("/clips/:uuid", UpdateClipboard)
-	fmt.Println("fab")
+	// fmt.Println("fab")
 	e.DELETE("/clips/:uuid", DeleteClipboard)
 
 	e.Logger.Fatal(e.Start(":8080"))
@@ -43,7 +43,7 @@ func CreateClipboard(c echo.Context) error {
 	digest := fmt.Sprintf("%x", content)
 	short := uuid[:4]
 	size := len(content)
-	url := "http://example.com/" + short
+	url := "127.0.0.1:8080/clips/" + short
 
 	clipboards[uuid] = Clipboard{
 		Date:   time.Now().Format(time.RFC3339),
